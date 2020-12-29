@@ -22,6 +22,11 @@ echo "<h1>This is the MAIN PAGE</h1>";
 	<li><a href="day10-e.php">day10-e.php</a></li>
 	<li><a href="day10-f.php">day10-f.php</a></li>
 	<li><a href="day10-g.php">day10-g.php</a></li>
+	<li><a href="day11-a.php">day11-a.php</a></li>
+	<li><a href="day11-b.php">day11-b.php</a></li>
+	<li><a href="day11-c.php">day11-c.php</a></li>
+	<li><a href="day11-d.php">day11-d.php</a></li>
+	<li><a href="day11-e.php">day11-e.php</a></li>
 </ul>
 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 </body>
