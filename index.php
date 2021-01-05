@@ -39,6 +39,9 @@ echo "<h1>This is the MAIN PAGE</h1>";
 	<li><a href="usingDatabase/day12-b-insert.php">day12-b-insert.php</a></li>
 	<li><a href="usingDatabase/day12-c-insert.php">day12-c-insert.php</a></li>
 	<li><a href="usingDatabase/day12-d-select.php">day12-d-select.php</a></li>
+	<li><a href="usingDatabase/day13-a-select.php">day13-a-select.php</a></li>
+	<li><a href="usingDatabase/day13-b-select.php">day13-b-select.php</a></li>
+	<li><a href="usingDatabase/day13-c-select.php">day13-c-select.php</a></li>
 </ol>
 </div>
 <div class="col-sm-1 bg-secondary"></div>
