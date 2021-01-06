@@ -30,6 +30,7 @@ echo "<h1>This is the MAIN PAGE</h1>";
 	<li><a href="day11-c.php">day11-c.php</a></li>
 	<li><a href="day11-d.php">day11-d.php</a></li>
 	<li><a href="day11-e.php">day11-e.php</a></li>
+	<li><a href="day14-b-uploadPage.php">day14-b-uploadPage.php</a></li>
 </ul>
 </div>
 <div class="col-sm-1 bg-secondary"></div>
@@ -42,6 +43,9 @@ echo "<h1>This is the MAIN PAGE</h1>";
 	<li><a href="usingDatabase/day13-a-select.php">day13-a-select.php</a></li>
 	<li><a href="usingDatabase/day13-b-select.php">day13-b-select.php</a></li>
 	<li><a href="usingDatabase/day13-c-select.php">day13-c-select.php</a></li>
+	<li><a href="usingDatabase/day13-d-update.php">day13-c-select.php</a></li>
+	<li><a href="usingDatabase/day14-a-delete.php">day14-a-delete.php</a></li>
+	<li><a href="usingDatabase/day14-d-uploadTest.php">day14-d-uploadTest.php</a></li>
 </ol>
 </div>
 <div class="col-sm-1 bg-secondary"></div>

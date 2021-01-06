@@ -99,7 +99,7 @@ while ($row=$result->fetch_assoc()) {
 	<td>".$row['fld_price']."</td>
 	<td>".$row['fld_quantity']."</td>
 	<td><a href='day13-d-update.php?id=".$row['fld_pid']."'>UPDATE</a></td>
-	<td><a href='?id=".$row['fld_pid']."'>DELETE</a></td></td>
+	<td><a href='day14-a-delete.php?id=".$row['fld_pid']."'>DELETE</a></td></td>
 	</tr>";
 }
 ?>
