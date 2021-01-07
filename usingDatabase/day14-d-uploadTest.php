@@ -12,6 +12,8 @@
 	<textarea name="picNotes" placeholder="Picture Note"></textarea><br/>
 	<input type="submit" value="Upload Image" name="submit">
 </form>
+<a class="btn btn-info" href="day15-a-viewImages.php">View Image</a>
+<a class="btn btn-warning" href="day15-b-dbCarousel.php">Image Carousel</a>
 <?php
 if (isset($_GET['result'])) {
 	echo $_GET['result'];

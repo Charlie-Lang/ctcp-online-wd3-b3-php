@@ -6,6 +6,10 @@
 	<title></title>
 </head>
 <body class="container">
+<div class="btn-group" role="group" aria-label="Basic example">
+	<a class="btn btn-primary" href="day12-c-insert.php">Insert</a>
+	<a class="btn btn-warning" href="day14-d-uploadTest.php">Upload Image</a>
+</div>
 <h1>SELECT with WHERE and ORDER BY</h1>
 <form>
 	Search: <input type="text" name="sName"><br/>

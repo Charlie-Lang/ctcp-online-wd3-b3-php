@@ -10,7 +10,7 @@ $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
-  $picNotes = $_POST['picNotes'];
+  $picNotes = $mysqli->real_escape_string($_POST['picNotes']);
   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
   if($check !== false) {
     $result.="File is an image - " . $check["mime"] . ".<br/>";
@@ -34,6 +34,7 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     $sqlInsert="INSERT INTO tbl_pic_upload(fld_pic_name, fld_pic_notes) VALUES ('$picName','$picNotes')";
+    
     if ($result = $mysqli->query($sqlInsert)) {
       $result.="File Upload recorded on database<br/>";
     }

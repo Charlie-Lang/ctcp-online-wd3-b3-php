@@ -43,12 +43,35 @@ echo "<h1>This is the MAIN PAGE</h1>";
 	<li><a href="usingDatabase/day13-a-select.php">day13-a-select.php</a></li>
 	<li><a href="usingDatabase/day13-b-select.php">day13-b-select.php</a></li>
 	<li><a href="usingDatabase/day13-c-select.php">day13-c-select.php</a></li>
-	<li><a href="usingDatabase/day13-d-update.php">day13-c-select.php</a></li>
-	<li><a href="usingDatabase/day14-a-delete.php">day14-a-delete.php</a></li>
 	<li><a href="usingDatabase/day14-d-uploadTest.php">day14-d-uploadTest.php</a></li>
+	<li><a href="usingDatabase/day15-a-viewImages.php">day15-a-viewImages</a></li>
+	<li><a href="usingDatabase/day15-b-dbCarousel.php">day15-b-dbCarousel</a></li>
 </ol>
 </div>
 <div class="col-sm-1 bg-secondary"></div>
+</div>
+<div class="row">
+<div class="col-sm-3 bg-danger"></div>
+<div class="col">
+	<ul>
+		<li><a href="htmlOnlySamples/b3day1-a.html">b3day1-a.html</a></li>
+		<li><a href="htmlOnlySamples/b3day2-a.html">b3day2-a.html</a></li>
+		<li><a href="htmlOnlySamples/b3day2-b.html">b3day2-b.html</a></li>
+		<li><a href="htmlOnlySamples/b3day3-a.html">b3day3-a.html</a></li>
+		<li><a href="htmlOnlySamples/b3day3-b.html">b3day3-b.html</a></li>
+		<li><a href="htmlOnlySamples/b3day3-c.html">b3day3-c.html</a></li>
+		<li><a href="htmlOnlySamples/b3day3-d.html">b3day3-d.html</a></li>
+		<li><a href="htmlOnlySamples/b3day4-a.html">b3day4-a.html</a></li>
+		<li><a href="htmlOnlySamples/b3day4-b.html">b3day4-b.html</a></li>
+		<li><a href="htmlOnlySamples/b3day4-c.html">b3day4-c.html</a></li>
+		<li><a href="htmlOnlySamples/b3day4-d.html">b3day4-d.html</a></li>
+		<li><a href="htmlOnlySamples/b3day6-a.html">b3day6-a.html</a></li>
+		<li><a href="htmlOnlySamples/b3day6-b.html">b3day6-b.html</a></li>
+		<li><a href="htmlOnlySamples/b3day6-c.html">b3day6-c.html</a></li>
+		<li><a href="htmlOnlySamples/b3day6-d.html">b3day6-d.html</a></li>
+		<li><a href="htmlOnlySamples/b3day7-a.html">b3day7-a.html</a></li>
+	</ul>
+</div>
 </div>
 <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
 </body>
