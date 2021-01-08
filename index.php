@@ -47,6 +47,8 @@ echo "<h1>This is the MAIN PAGE</h1>";
 	<li><a href="usingDatabase/day15-a-viewImages.php">day15-a-viewImages</a></li>
 	<li><a href="usingDatabase/day15-b-dbCarousel.php">day15-b-dbCarousel</a></li>
 </ol>
+<hr/>
+<a href="sessionDiscuss/day16-a.php">to session testing</a>
 </div>
 <div class="col-sm-1 bg-secondary"></div>
 </div>
