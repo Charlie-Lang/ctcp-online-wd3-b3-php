@@ -49,6 +49,7 @@ echo "<h1>This is the MAIN PAGE</h1>";
 </ol>
 <hr/>
 <a href="sessionDiscuss/day16-a.php">to session testing</a>
+<a href="blogSample/">to session testing</a>
 </div>
 <div class="col-sm-1 bg-secondary"></div>
 </div>

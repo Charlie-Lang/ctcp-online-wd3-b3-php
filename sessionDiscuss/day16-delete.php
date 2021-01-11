@@ -1,5 +1,36 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+}
+$redirect = "index.php";
+if (!isset($_SESSION['id'])) {
+	header("Location: logout.php");
+}
+
+include 'connection.php';
+
+if (isset($_GET['submit'])) {
+$pid=$mysqli->real_escape_string($_GET['pid']);
+
+$runQuery=true;
+$resultMessage="";
+
+$sqlQuery="DELETE FROM tbl_pricelist
+WHERE fld_pid = '$pid'";
+
+if ($runQuery) {
+	$result = $mysqli->query($sqlQuery);
+	if ($result) {
+		$resultMessage="ROW DELETED";
+	} else {
+		$resultMessage="Delete Failed";
+	}
+}
+// echo $resultMessage;
+header("Location: day16-select2.php?result=$resultMessage");
+}
+?>
 <!DOCTYPE html>
-<?php include 'connection.php'; ?>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
@@ -61,30 +92,10 @@ if (isset($_GET['id'])) {
 	echo $getRow['fld_pid'];
 }	
 ?>"> 
-<button class="bg-danger" type="submit" name="submit">DELETE</button>
-<a href="day13-c-select.php">cancel</a>
+<button class="bg-danger" type="submit" name="submit">DELETE</button><a href="day16-select2.php">cancel</a>
 </form>
 <?php
-if (isset($_GET['submit'])) {
-$pid=$mysqli->real_escape_string($_GET['pid']);
 
-$runQuery=true;
-$resultMessage="";
-
-$sqlQuery="DELETE FROM tbl_pricelist
-WHERE fld_pid = '$pid'";
-
-if ($runQuery) {
-	$result = $mysqli->query($sqlQuery);
-	if ($result) {
-		$resultMessage="ROW DELETED";
-	} else {
-		$resultMessage="Delete Failed";
-	}
-}
-echo $resultMessage;
-header("Location: day13-c-select.php?result=$resultMessage");
-}
 ?>
 <script type="text/javascript" src="../js/bootstrap.bundle.min.js"></script>
 </body>

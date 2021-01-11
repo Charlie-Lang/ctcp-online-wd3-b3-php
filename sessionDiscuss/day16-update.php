@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $redirect = "index.php";
 if (!isset($_SESSION['id'])) {
-	$redirect = "logout.php";
+	header("Location: logout.php");
 }
 
 include 'connection.php';
@@ -48,13 +48,12 @@ if ($runQuery) {
 		$resultMessage="Failed";
 	}
 }
-
-$redirect = "day16-select2.php?result=$resultMessage";
+	header("Location: day16-select2.php?result=$resultMessage");
 }
 
-if (!isset($_SESSION['id']) || isset($_GET['submit'])) {
-	header("Location: $redirect");
-}
+// if (!isset($_SESSION['id']) || isset($_GET['submit'])) {
+//	header("Location: $redirect");
+// }
 
 ?>
 <!DOCTYPE html>
