@@ -2,9 +2,9 @@
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
-if (!isset($_SESSION['id'])) {
-	header("Location: logout.php");
-}
+// if (!isset($_SESSION['id'])) {
+// 	header("Location: logout.php");
+// }
 
 include 'connection.php';
 ?>
@@ -15,6 +15,7 @@ include 'connection.php';
 .post {
 	border: 12px groove goldenrod;
 	margin: 12px;
+	padding: 15px;
 }
 .post img {
 	height: 200px;
@@ -25,8 +26,13 @@ include 'connection.php';
 </head>
 <body>
 <a href="viewBlog.php">back</a>
-<a href="logout.php">logout</a>
 <?php
+if (isset($_SESSION['account'])) {
+	echo "<a href='logout.php'>logout</a><br/>";
+} else {
+	echo "<a href='register.php'>Register to site</a><br/>";
+}
+
 $sqlWhere = 1;
 if (isset($_GET['id'])) {
 	$bid = $mysqli->real_escape_string($_GET['id']);
@@ -56,9 +62,9 @@ echo "<div class='post'>
 <h2>".$row['fld_btitle']."</h2>
 <h3>Posted by: ".$row['fld_username']."</h3>
 <p>".$row['content']."</p>";
-if ($_SESSION['account'] == 'editor') {
-	echo "<a href='updateArticle.php?id=".$row['fld_uid']."'>Update</a><br/>";
-	echo "<a href='deleteArticle.php?id=".$row['fld_uid']."'>Delete</a><br/>";
+if (isset($_SESSION['account']) && $_SESSION['account'] == 'editor' && $_SESSION['id'] == $row['fld_uid']) {
+	echo "<a href='updateArticle.php?id=".$row['fld_bid']."'>Update</a><br/>";
+	echo "<a href='deleteArticle.php?id=".$row['fld_bid']."'>Delete</a><br/>";
 }
 echo "</div>";
 ?>
@@ -71,13 +77,15 @@ if (isset($_GET['id'])) {
 	while ($row2 = $result2->fetch_assoc()) {
 		echo "<h4>".$row2['fld_username'].":</h4>";
 		echo "<p>".$row2['fld_feedback']."</p>";
-		if ($_SESSION['id'] == $row2['fld_uid']) {
-			echo "<a href='upComment.php?id=".$row['fld_uid']."'>Update</a><br/>";
-			echo "<a href='delComment.php?id=".$row['fld_uid']."'>Delete</a><br/>";
+		if (isset($_SESSION['id']) && $_SESSION['id'] == $row2['fld_uid']) {
+			echo "<a href='upComment.php?id=".$row2['fld_fid']."'>Update</a><br/>";
+			echo "<a href='delComment.php?id=".$row2['fld_fid']."'>Delete</a><br/>";
 		}
 	}
 }
-echo "<a href='newComment.php?id=".$row['fld_uid']."'>Make a New Comment</a><br/>";
+
+echo "<a href='newComment.php?id=".$row['fld_bid']."'>Make a New Comment</a><br/>";
+// make new comment about the blog
 ?>
 </body>
 </html>
