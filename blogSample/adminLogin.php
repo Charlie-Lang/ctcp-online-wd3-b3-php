@@ -4,16 +4,17 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 include 'connection.php'; 
 
-$headerLoc = "login.php?login=failed";
+//day 21 discussion
+
+$headerLoc = "adminLogin.php?login=failed";
 
 if (isset($_POST['submit'])) {
 	$uname=$mysqli->real_escape_string($_POST['uname']);
 	$pword=$mysqli->real_escape_string($_POST['pword']);
-	$acttype=$mysqli->real_escape_string($_POST['acttype']);
 
 	$pword = sha1($pword);
 
-	$sqlQuery = "SELECT COUNT(*), fld_uid, fld_act_type FROM tbl_login WHERE fld_username='$uname' AND fld_password='$pword' AND fld_act_type = '$acttype' LIMIT 0,1";
+	$sqlQuery = "SELECT COUNT(*), fld_uid, fld_act_type FROM tbl_login WHERE fld_username='$uname' AND fld_password='$pword' AND fld_act_type = 'admin' LIMIT 0,1";
 	//echo "$sqlQuery";
 	$result = $mysqli->query($sqlQuery);
 	$row = $result->fetch_array();
@@ -22,7 +23,7 @@ if (isset($_POST['submit'])) {
 		$_SESSION['id'] = $row[1];
 		$_SESSION['uname'] = $uname;
 		$_SESSION['account'] = $row[2];
-		$headerLoc = "viewBlog.php"; //fill correct filename later
+		$headerLoc = "adminDashboard.php"; //fill correct filename later
 	}
 
 	header("Location: $headerLoc");
@@ -37,11 +38,6 @@ if (isset($_POST['submit'])) {
 <form action="" method="POST">
 Username: <input type="text" name="uname"><br/>
 Password: <input type="password" name="pword"><br/>
-Account Type: 
-<select name="acttype">
-	<option value="reader">Reader</option>
-	<option value="editor">Editor</option>
-</select><br/>
 <button type="submit" name="submit">LOGIN</button>
 </form>
 <?php

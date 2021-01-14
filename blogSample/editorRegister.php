@@ -1,5 +1,16 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+}
+
+if (isset($_SESSION['id']) && $_SESSION['account'] != "admin") {
+	header("Location: viewBlog.php");
+} elseif (!isset($_SESSION['id'])) {
+	header("Location: logout.php");
+}
+
 include 'connection.php'; 
+//day 21 codes
 if (isset($_POST['submit'])) {
 $uname=$mysqli->real_escape_string($_POST['uname']);
 $pword=$mysqli->real_escape_string($_POST['pword']);
@@ -44,11 +55,13 @@ if ($loginCheck[0] > 0) {
 $sqlQuery="INSERT INTO tbl_login
 	(fld_username
 	, fld_password
-	, fld_useremail) 
+	, fld_useremail
+	, fld_act_type) 
 VALUES 
 	('$uname'
 	,'$pword'
-	,'$email')";
+	,'$email'
+	,'editor')";
 	echo $sqlQuery."<br/>";
 
 if ($runQuery) {
@@ -72,7 +85,7 @@ if ($runQuery) {
 Username: <input type="text" name="uname"><br/>
 Password: <input type="password" name="pword"><br/>
 Email: <input type="text" name="email"><br/>
-<button type="submit" name="submit">Create Account</button>
+<button type="submit" name="submit">Create EDITOR Account</button>
 </form>
 <?php
 if (isset($_POST['submit'])) {

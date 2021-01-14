@@ -11,10 +11,10 @@ if (isset($_SESSION['id']) && $_SESSION['account'] != "editor") {
 
 include 'connection.php';
 
-
-if (isset($_GET['submit'])) {
-	$bid = $mysqli->real_escape_string($_GET['bid']);
-	$prevPic = $mysqli->real_escape_string($_GET['prevPic']);
+$target_dir = "blogPics/";
+if (isset($_POST['submit'])) {
+	$bid = $mysqli->real_escape_string($_POST['bid']);
+	$prevPic = $mysqli->real_escape_string($_POST['prevPic']);
 	$uid = $mysqli->real_escape_string($_SESSION['id']);
 
 	$sqlQuery = "DELETE FROM tbl_blog 
@@ -27,7 +27,8 @@ if (isset($_GET['submit'])) {
 	} else {
 		$resultMessage="Delete Failed";
 	}
-	// header("Location: viewBlog.php?result=$resultMessage");
+	
+	header("Location: viewBlog.php?result=$resultMessage");
 }
 ?>
 <!DOCTYPE html>
@@ -49,7 +50,6 @@ if (isset($_GET['submit'])) {
 <body>
 <a href="viewBlog.php">back</a>
 <?php
-$target_dir = "blogPics/";
 if (isset($_GET['id'])) {
 	$bid = $mysqli->real_escape_string($_GET['id']);
 	$uid = $mysqli->real_escape_string($_SESSION['id']);
@@ -91,7 +91,7 @@ if (isset($_GET['id']) && $rowC[0] == 1) {
 ?>
 <br/>
 <br/>
-<form action="" method="DELETE">
+<form action="" method="POST">
 <input type="hidden" name="bid" value="<?php
 if (isset($_GET['id']) && $rowC[0] == 1) {
 	echo $row['fld_bid'];

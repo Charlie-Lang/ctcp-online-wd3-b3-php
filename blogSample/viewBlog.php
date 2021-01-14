@@ -24,6 +24,7 @@ include 'connection.php';
 <?php
 if (isset($_SESSION['account'])) {
 	echo "<a href='logout.php'>logout</a><br/>";
+	echo "<a href='dashboard.php'>To Dashboard</a><br/>";
 	if ($_SESSION['account'] == "editor") {
 		echo "<a href='newArticle.php'>Make new Article</a><br/>";
 	}

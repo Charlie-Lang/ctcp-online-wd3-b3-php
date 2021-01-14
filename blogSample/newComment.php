@@ -2,11 +2,39 @@
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
-// if (!isset($_SESSION['id'])) {
-// 	header("Location: logout.php");
-// }
+
+if (!isset($_SESSION['id'])) {
+	header("Location: logout.php");
+}
 
 include 'connection.php';
+// day 20 code
+if (isset($_POST['submit'])) {
+	$uName = $_SESSION['uname'];
+	$uid = $_SESSION['id'];
+	$bid = $mysqli->real_escape_string($_POST['bid']);
+	$comment = $mysqli->real_escape_string($_POST['comment']);
+
+	$runQuery = true;
+	$resultMessage = "";
+
+	if (empty($_POST['comment']) || (strlen(trim($_POST['comment'])) == 0)) {
+		$runQuery = false;
+		$resultMessage .= "Empty Feedback<br/>";
+	}
+
+	$sqlQuery = "INSERT INTO tbl_feedback(fld_username, fld_feedback, fld_bid, fld_uid) 
+		VALUES ('$uName', '$comment', '$bid', '$uid')";
+
+	if ($runQuery) {
+		if ($insertResult = $mysqli->query($sqlQuery)) {
+			$resultMessage = "New Comment made";
+		} else {
+			$resultMessage .= "Comment not recorded";
+		}
+	}
+	header("Location: newComment.php?id=$bid&result=$resultMessage");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,11 +57,10 @@ include 'connection.php';
 <?php
 if (isset($_SESSION['account'])) {
 	echo "<a href='logout.php'>logout</a><br/>";
-	echo "<a href='dashboard.php'>To Dashboard</a><br/>";
 } else {
 	echo "<a href='register.php'>Register to site</a><br/>";
 }
-
+$bid="0";
 $sqlWhere = 1;
 if (isset($_GET['id'])) {
 	$bid = $mysqli->real_escape_string($_GET['id']);
@@ -63,10 +90,6 @@ echo "<div class='post'>
 <h2>".$row['fld_btitle']."</h2>
 <h3>Posted by: ".$row['fld_username']."</h3>
 <p>".$row['content']."</p>";
-if (isset($_SESSION['account']) && $_SESSION['account'] == 'editor' && $_SESSION['id'] == $row['fld_uid']) {
-	echo "<a href='updateArticle.php?id=".$row['fld_bid']."'>Update</a><br/>";
-	echo "<a href='deleteArticle.php?id=".$row['fld_bid']."'>Delete</a><br/>";
-}
 echo "</div>";
 ?>
 <h2>Comments</h2>
@@ -78,20 +101,20 @@ if (isset($_GET['id'])) {
 	while ($row2 = $result2->fetch_assoc()) {
 		echo "<h4>".$row2['fld_username'].":</h4>";
 		echo "<p>".$row2['fld_feedback']."</p>";
-		if (isset($_SESSION['id']) && $_SESSION['id'] == $row2['fld_uid']) {
-			echo "<a href='upComment.php?id=".$row2['fld_bid']."&fid=".$row2['fld_fid']."'>Update</a><br/>";
-			echo "<a href='delComment.php?id=".$row2['fld_bid']."&fid=".$row2['fld_fid']."'>Delete</a><br/>";
-		}
 	}
 }
-
-echo "<a href='newComment.php?id=".$row['fld_bid']."'>Make a New Comment</a><br/>";
-// make new comment about the blog
-
+?>
+<form action="" method="POST">
+<h2>NEW COMMENT</h2>
+<textarea name="comment" placeholder="New Comment" rows="8" cols="75"></textarea>
+<br/>
+<input type="hidden" name="bid" value="<?php echo $bid; ?>">
+<button type="submit" name="submit">New Comment</button>
+</form>
+<?php
 if (isset($_GET['result'])) {
 	echo "<h3>".$_GET['result']."</h3>";
 }
-
 ?>
 </body>
 </html>

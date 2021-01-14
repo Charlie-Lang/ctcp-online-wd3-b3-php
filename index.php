@@ -48,8 +48,8 @@ echo "<h1>This is the MAIN PAGE</h1>";
 	<li><a href="usingDatabase/day15-b-dbCarousel.php">day15-b-dbCarousel</a></li>
 </ol>
 <hr/>
-<a href="sessionDiscuss/day16-a.php">to session testing</a>
-<a href="blogSample/">to session testing</a>
+<a href="sessionDiscuss/day16-a.php">to session testing</a><br/>
+<a href="blogSample/">to Blog Sample</a>
 </div>
 <div class="col-sm-1 bg-secondary"></div>
 </div>
